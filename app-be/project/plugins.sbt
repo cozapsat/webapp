@@ -6,3 +6,4 @@ resolvers ++= Seq(
 
 addSbtPlugin("com.github.ddispaltro" % "sbt-reactjs" % "0.6.8")
 addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.2.0")
+addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
