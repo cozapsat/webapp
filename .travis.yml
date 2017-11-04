@@ -1,0 +1,8 @@
+language: scala
+scala:
+   - 2.12.4
+before_script:
+   - cd app-be
+script:
+   - sbt scalastyle
+     
