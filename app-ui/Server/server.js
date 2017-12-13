@@ -1,51 +1,18 @@
 var express = require('express');
 var graphqlHTTP = require('express-graphql');
-var { buildSchema } = require('graphql');
+var schema = require('./Schema.js');
 var cors = require('cors');
-var User = require("./User.js")
+var User, {usersData} = require("./User.js");
 
-
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-    type User {
-        name : String!
-        email : String
-        passw : String!
-    }    
-
-    type Mutation {
-      createUser(name: String!): User
-    }
-
-    type Query {
-        user: User
-        loginUser(name: String!, passw: String!): String!
-        users: [User]!
-    }
-`);
-
-
-var users = [{
-    name: "test",
-    passw: "ahoj"
-},
-{
-    name: "admin",
-    passw: "admin"
-}
-
-];
-
-// The root provides a resolver function for each API endpoint
 var root = {
     createUser: ({name}) => {
-        return users.push(new User(name, "init").getObject())
+        return usersData.push(new User(name, "init").getObject())
     },
 
     loginUser:  ({name, passw}) => {
-        for(var i = 0; i < users.length; i++)
+        for(var i = 0; i < usersData.length; i++)
         {
-            var u = users[i];
+            var u = usersData[i];
             console.log(name, passw)
             if(u.name == name && u.passw == passw)
             {
@@ -63,7 +30,7 @@ var root = {
     },
 
     users: (obj, args, context) => {
-        return users;
+        return usersData;
     }
 };
 

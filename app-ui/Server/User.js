@@ -1,6 +1,19 @@
 /**
  * Created by ondrej on 13/12/2017.
  */
+
+module.exports.usersData = [{
+    name: "test",
+    passw: "ahoj"
+    },
+    {
+        name: "admin",
+        passw: "admin"
+    }
+
+];
+
+
 class User  {
     constructor(name, passw, email)
     {
