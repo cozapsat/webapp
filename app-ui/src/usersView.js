@@ -13,7 +13,7 @@ const getUsersQ = gql`
     }
 `;
 
-export default class Intro extends React.Component  {
+export default class UsersView extends React.Component  {
 	 constructor(props) {
         super(props);
         this.state = {
@@ -39,9 +39,9 @@ export default class Intro extends React.Component  {
 
     render() {
         return (
-        	<div>
+        	<div className="usersView">
 	         	   {this.state.users.map(function(object, i){
-				        return <div>test </div>;
+                       return (<div key={i}>{object.name}</div>);
 				   })}
             </div>
         );
